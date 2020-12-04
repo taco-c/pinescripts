@@ -1,0 +1,12 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © R. Karlsen <rk@cassettian.space>
+
+//@version=4
+study("XXXNOK", overlay=true, scale=scale.left)
+
+cur = input(title="Currency", defval="EUR", options=["USD", "EUR"])
+
+sym = "OANDA:" + cur + "NOK"
+nok = security(sym, "1", close)
+
+plot(nok, color=color.black, linewidth=1)
