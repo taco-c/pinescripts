@@ -2,21 +2,23 @@
 // © R. Karlsen <rk@cassettian.space>
 
 //@version=4
-study("BTC in NOK via USD and EUR (favour for USD)")
-
-btcusd = security("BITSTAMP:BTCUSD", "1", close)
-usdnok = security("OANDA:USDNOK", "1", close)
-btceur = security("COINBASE:BTCEUR", "1", close)
-eurnok = security("OANDA:EURNOK", "1", close)
-
-btcusdnok = btcusd * usdnok
-btceurnok = btceur * eurnok
-favour = btceurnok - btcusdnok
-
-palette = favour >= 0.0 ? color.green : color.red
-
-plot(btcusdnok, title="USD")
-plot(btceurnok, title="EUR")
-plot(favour, title="Favour", color=palette)
+study("BTC in NOK via", scale=scale.right, overlay=true)
 
 
+cur = input(title="Currency", defval="USD", options=["USD", "EUR"])
+
+btcsym = if cur == "USD"
+    "BITSTAMP:BTCUSD"
+else if cur == "EUR"
+    "COINBASE:BTCEUR"
+
+noksym = if cur == "USD"
+    "OANDA:USDNOK"
+else if cur == "EUR"
+    "OANDA:EURNOK"
+
+btc = security(btcsym, "1", close)
+nok = security(noksym, "1", close)
+btcnok = btc * nok
+
+plot(btcnok, color=#FFFFFF00, trackprice=true)
