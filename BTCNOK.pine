@@ -2,10 +2,10 @@
 // © R. Karlsen <rk@cassettian.space>
 
 //@version=4
-study("BTC in NOK via", scale=scale.right, overlay=true)
+study("BTCNOK", scale=scale.right, overlay=true)
 
 
-cur = input(title="Currency", defval="USD", options=["USD", "EUR"])
+cur = input(title="Currency", defval="EUR", options=["USD", "EUR"])
 
 btcsym = if cur == "USD"
     "BITSTAMP:BTCUSD"
