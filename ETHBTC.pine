@@ -1,0 +1,6 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © R. Karlsen <rk@cassettian.space>
+
+//@version=4
+study("ETCBTC", overlay=true, scale=scale.left)
+plot(security("BITSTAMP:ETHBTC", "60", close))
